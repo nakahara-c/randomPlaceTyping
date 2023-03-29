@@ -6,3 +6,12 @@
     background-color: #1d9bf0;
     color:#FFFFFF;
 }
+
+.block {
+    display: inline-block;
+    background-image: url("./block.png");
+    background-size: contain;
+    width: 55px;
+    height: 55px;
+    margin-bottom:0 !important;
+}
