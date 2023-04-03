@@ -2,11 +2,9 @@
 
 let time = 0;
 
-
-
 const blocks = document.getElementsByClassName("block");
 const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-let charList = alphabet.split('');
+
 const shuffleArray = (array) => {
     const cloneArray = [...array];
   
@@ -19,11 +17,12 @@ const shuffleArray = (array) => {
   
     return result;
 }
+let charList = alphabet.split('').shuffleArray(charList);
 
-refreshCharList();
+refreshCharList(charList);
+assignRandomPlace();
 
-function refreshCharList() {
-    charList = shuffleArray(charList);
+function refreshCharList(charList) {
 
     for (let i = 0; i < blocks.length; i++) {
         blocks[i].textContent = charList[i];
@@ -33,6 +32,22 @@ function refreshCharList() {
         }
     }
 }
+
+
+
+function assignRandomPlace(blocks, charList) {
+
+    for (let i = 0; i < blocks.length; i++) {
+        window.addEventListener('keydown', (e) => {
+            if (e.key === charList[i]) {
+//
+            }
+        })
+    }
+
+}
+
+
 
 /*
 window.addEventListener('keydown', startType);
