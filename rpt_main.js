@@ -1,29 +1,36 @@
 //import { wordList } from "./wordList";
 
-let time = 0;
-
 const blocks = document.getElementsByClassName("block");
-const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+const alphabet = 'qwertyuiopasdfghjklzxcvbnm';
 
-const shuffleArray = (array) => {
+let charDict = new Object();
+for (let i = 0; i < alphabet.length; i++) {
+    charDict[alphabet[i]] = alphabet[i];
+}
+let charList = shuffleArray(alphabet.split(''));
+
+
+refreshCharList();
+keyAssignToRandomPlace();
+
+function shuffleArray(array) {
     const cloneArray = [...array];
-  
-    const result = cloneArray.reduce((_,cur,idx) => {
-      let rand = Math.floor(Math.random() * (idx + 1));
-      cloneArray[idx] = cloneArray[rand]
-      cloneArray[rand] = cur;
-      return cloneArray
-    })
-  
+
+    const result = cloneArray.reduce((_, cur, idx) => {
+        let rand = Math.floor(Math.random() * (idx + 1));
+        cloneArray[idx] = cloneArray[rand];
+        cloneArray[rand] = cur;
+        return cloneArray;
+    });
+
+    for (let i = 0; i < result.length; i++) {
+        charDict[i] = result[i];
+    }
+
     return result;
 }
-let charList = alphabet.split('').shuffleArray(charList);
 
-refreshCharList(charList);
-assignRandomPlace();
-
-function refreshCharList(charList) {
-
+function refreshCharList() {
     for (let i = 0; i < blocks.length; i++) {
         blocks[i].textContent = charList[i];
 
@@ -33,19 +40,15 @@ function refreshCharList(charList) {
     }
 }
 
-
-
-function assignRandomPlace(blocks, charList) {
-
+function keyAssignToRandomPlace() {
     for (let i = 0; i < blocks.length; i++) {
         window.addEventListener('keydown', (e) => {
-            if (e.key === charList[i]) {
-//
-            }
+            return charDict[e.key];
         })
     }
-
 }
+
+
 
 
 
