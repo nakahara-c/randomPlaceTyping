@@ -1,17 +1,57 @@
-//import { wordList } from "./wordList";
+import { wordList } from "./wordList.js";
 
+let shuffledWordList = shuffleArray(wordList);
 const blocks = document.getElementsByClassName("block");
 const alphabet = 'qwertyuiopasdfghjklzxcvbnm';
-
+const word = document.getElementById("word");
 let charDict = new Object();
-for (let i = 0; i < alphabet.length; i++) {
-    charDict[alphabet[i]] = alphabet[i];
-}
 let charList = shuffleArray(alphabet.split(''));
 
+let typeText = "aiueo";
+word.value = typeText;
 
-refreshCharList();
-keyAssignToRandomPlace();
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+        keyAssign();
+    }
+});
+
+function keyAssign () {
+
+    makeRandomDict();
+
+    refreshCharList();
+
+    window.addEventListener('keydown', (e) => {
+        e.preventDefault();
+        let nextChar = typeText[0];
+        if (charDict[e.key] === nextChar) {
+            console.log(charDict[e.key], nextChar);
+            typeText = typeText.slice(1);
+            word.value = typeText;
+        }
+    });
+
+};
+
+function makeRandomDict () {
+
+    for (let i = 0; i < alphabet.length; i++) {
+        charDict[alphabet[i]] = charList[i];
+    }
+}
+
+function refreshCharList() {
+
+    for (let i = 0; i < blocks.length; i++) {
+        blocks[i].textContent = charList[i];
+
+        if (charList[i] === "a" || charList[i] === "i" || charList[i] === "u" || charList[i] === "e" || charList[i] === "o") {
+            blocks[i].style.color = "red";
+        }
+    }
+}
+
 
 function shuffleArray(array) {
     const cloneArray = [...array];
@@ -23,30 +63,11 @@ function shuffleArray(array) {
         return cloneArray;
     });
 
-    for (let i = 0; i < result.length; i++) {
-        charDict[i] = result[i];
-    }
-
     return result;
 }
 
-function refreshCharList() {
-    for (let i = 0; i < blocks.length; i++) {
-        blocks[i].textContent = charList[i];
 
-        if (charList[i] === "a" || charList[i] === "i" || charList[i] === "u" || charList[i] === "e" || charList[i] === "o") {
-            blocks[i].style.color = "red";
-        }
-    }
-}
 
-function keyAssignToRandomPlace() {
-    for (let i = 0; i < blocks.length; i++) {
-        window.addEventListener('keydown', (e) => {
-            return charDict[e.key];
-        })
-    }
-}
 
 
 
