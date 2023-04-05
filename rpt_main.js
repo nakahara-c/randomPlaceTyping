@@ -12,7 +12,7 @@ let typeText = "";
 
 window.addEventListener('keydown', (e) => {
     e.preventDefault();
-    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+    if (e.key === 'Enter' || e.key === 'Escape') {
         keyAssign(e);
     } else {
         let nextChar = typeText[0];
