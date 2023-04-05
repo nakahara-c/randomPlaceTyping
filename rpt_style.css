@@ -7,6 +7,13 @@
     color:#FFFFFF;
 }
 
+#word {
+    width: 30em;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .block {
     display: inline-block;
     background-image: url("./block.png");
@@ -18,4 +25,21 @@
     color:#FFFFFF;
     font-size:2em;
     font-weight:bold;
+}
+
+.blockw {
+    display: inline-block;
+    background-image: url("./blockW.png");
+    background-size: contain;
+    width: 55px;
+    height: 55px;
+    margin-bottom:0 !important;
+
+    color: #808080;
+    font-size:2em;
+    font-weight: normal;
+}
+
+.spacer {
+    height:0.5em;
 }
