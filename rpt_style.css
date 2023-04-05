@@ -25,6 +25,7 @@
     color:#FFFFFF;
     font-size:2em;
     font-weight:bold;
+    text-align:center;
 }
 
 .blockw {
@@ -38,6 +39,19 @@
     color: #808080;
     font-size:2em;
     font-weight: normal;
+    text-align:center;
+}
+
+.blockx {
+    display: inline-block;
+    height: 53px;
+    transform: translate(0px, 2px);;
+    margin-bottom:0 !important;
+    border: 2px solid #808080;
+    color: #808080;
+    font-size:2em;
+    font-weight: normal;
+    text-align:center;
 }
 
 .spacer {
